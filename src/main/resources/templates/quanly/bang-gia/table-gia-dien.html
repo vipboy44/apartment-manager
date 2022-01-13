@@ -1,0 +1,172 @@
+<div data-layout-decorate="~{layout-admin}" layout:fragment="content"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+     xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="main-panel">
+        <span hidden="true" id="username" sec:authentication="name"> </span>
+        <div class="content">
+            <div class="page-inner">
+                <div class="page-header">
+                    <h4 class="page-title">Quản lý bảng giá</h4>
+                    <ul class="breadcrumbs">
+                        <li class="nav-home">
+                            <a th:href="@{/quan-ly}">
+                                <i class="flaticon-home"></i>
+                            </a>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a>Quản lý</a>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a>Bảng giá điện</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="d-flex align-items-center">
+                                    <h4 class="card-title">Bảng giá điện</h4>
+                                    <button class="btn btn-sm btn-success btn-round ml-auto"
+                                            data-target="#form-building"
+                                            data-toggle="modal" onclick="changetitle()">
+                                        <i class="fa fa-plus"></i>
+                                        Thêm mới
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <!-- Modal -->
+                                <div aria-hidden="true" class="modal fade" id="form-building" role="dialog"
+                                     tabindex="-1">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header no-bd">
+                                                <h5 class="modal-title" id="form-giadien">
+                                                </h5>
+                                                <button aria-label="Close" class="close" data-dismiss="modal"
+                                                        type="button">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form>
+                                                    <div class="row">
+                                                        <div class="col-md-5 pl-2">
+                                                            <div class="form-group form-group-default">
+                                                                <input hidden="true" id="id" required="required"
+                                                                       type="number"/>
+                                                                <label>Đơn giá</label>
+                                                                <input class="form-control" id="price"
+                                                                       placeholder="Đơn giá"
+                                                                       type="number"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-7 pl-2">
+                                                            <div class="form-group form-group-default">
+                                                                <label>Ngày tạo</label>
+                                                                <input class="form-control" id="date"
+                                                                       placeholder="Ngày tạo"
+                                                                       type="date">
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row">
+
+                                                        <div class="col-md-12 pl-2">
+                                                            <div class="form-group form-group-default ">
+                                                                <label>Hạn mức(kWh)</label>
+                                                                <select class="form-control" id="limits">
+                                                                    <option value="50">Từ 0 đến 50</option>
+                                                                    <option value="100">Từ 51 đến 100</option>
+                                                                    <option value="200">Từ 101 đến 200</option>
+                                                                    <option value="300">Từ 201 đến 300</option>
+                                                                    <option value="400">Từ 301 đến 400</option>
+                                                                    <option value="401">Trên 400</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12 pl-2">
+                                                            <div class="form-group form-group-default">
+                                                                <label>Ghi chú</label>
+                                                                <textarea class="form-control" id="note"
+                                                                          rows="3"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer no-bd">
+                                                <button class="btn btn-success btn-sm" id="save" type="button">
+                                                    <i class="fas fa-save"></i>
+                                                    Lưu lại
+                                                </button>
+                                                <button class="btn btn-danger btn-sm" id="clean-form" type="button">
+                                                    <i class="fas fa-sync-alt"></i>
+                                                    Làm mới
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="table-responsive">
+                                    <table class="display table table-striped table-hover" id="table-electricity">
+                                        <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Hạn mức</th>
+                                            <th>Đơn giá</th>
+                                            <th>Ngày</th>
+                                            <th>Người tạo</th>
+                                            <th>Ghi chú</th>
+                                            <th style="width: 10%">Cập nhật</th>
+                                            <th style="width: 10%">Xóa</th>
+                                        </tr>
+                                        </thead>
+                                        <tfoot>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Hạn mức</th>
+                                            <th>Đơn giá</th>
+                                            <th>Ngày</th>
+                                            <th>Người tạo</th>
+                                            <th>Ghi chú</th>
+                                            <th style="width: 10%">Cập nhật</th>
+                                            <th style="width: 10%">Xóa</th>
+                                        </tr>
+                                        </tfoot>
+                                        <tbody>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="pull-left"></div>
+                <div class="copyright ml-auto">
+                    Version 1.0
+                </div>
+            </div>
+        </footer>
+
+        <script th:src="@{/assets/quanly/js/bang-gia/giadien.js}"></script>
+    </div>
+</div>

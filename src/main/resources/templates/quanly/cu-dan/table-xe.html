@@ -1,0 +1,156 @@
+<div data-layout-decorate="~{layout-admin}" layout:fragment="content"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="main-panel">
+        <div class="content">
+            <div class="page-inner">
+                <div class="page-header">
+                    <h4 class="page-title">Quản lý cư dân</h4>
+                    <ul class="breadcrumbs">
+                        <li class="nav-home">
+                            <a th:href="@{/quan-ly}">
+                                <i class="flaticon-home"></i>
+                            </a>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a >Cư dân</a>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a >Xe ký gửi</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="d-flex align-items-center">
+                                    <h4 class="card-title">Danh sách xe ký gửi</h4>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <!-- Modal -->
+                                <div aria-hidden="true" class="modal fade" id="form-vehicle" role="dialog" tabindex="-1">
+                                    <div class="modal-dialog modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header no-bd">
+                                                <h5 class="modal-title">
+                                                    Thêm xe ký gửi
+                                                </h5>
+                                                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form>
+                                                    <input class="form-control" hidden="true" id="idVehicle" 
+                                                           type="number">
+                                                    <div class="row">
+                                                        <div class="col-md-3 pl-2">
+                                                            <div class="form-group form-group-default ">
+                                                                <label>Loại xe</label>
+                                                                <select class="form-control" id="type">
+                                                                    <option th:each="t : ${TypeVehicles}" th:text="${t.name}" th:value="${t.id}"/>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-5 pl-2">
+                                                            <div class="form-group form-group-default">
+                                                                <label>Biển số </label>
+                                                                <input class="form-control" id="licensePlates" placeholder="Biển số xe"
+                                                                       type="text">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 pl-2">
+                                                            <div class="form-group form-group-default">
+                                                                <label>Màu </label>
+                                                                <input class="form-control" id="color" placeholder="Màu xe" type="text">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6 pl-2">
+                                                            <div class="form-group form-group-default">
+                                                                <label>Ngày ký gửi</label>
+                                                                <input class="form-control" id="date" placeholder="Ngày ký gửi"
+                                                                       type="date">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 pl-2">
+                                                            <div class="form-group form-group-default">
+                                                                <label>Cư dân </label>
+                                                                 <input class="form-control" id="resident_id" placeholder="Id cư dân"
+                                                                   type="text">
+                                                              
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer no-bd">
+                                                <button class="btn btn-primary btn-sm" id="save-vehicle" type="button">
+                                                    <i class="fas fa-save"></i>
+                                                    Lưu lại
+                                                </button>
+                                                <button class="btn btn-danger btn-sm" id="clean-form-vehicle" type="button">
+                                                    <i class="fas fa-sync-alt"></i>
+                                                    Làm mới
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="display table table-striped table-hover" id="table-vehicle">
+                                        <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Biến số</th>
+                                            <th>Màu xe</th>
+                                            <th>Ngày ký gửi</th>
+                                            <th>Id cư dâ</th>
+                                            <th>Loại xe</th>
+                                            <th style="width: 10%">Cập nhật</th>
+                                            <th style="width: 10%">Xóa</th>
+                                        </tr>
+                                        </thead>
+                                        <tfoot>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Biến số</th>
+                                            <th>Màu xe</th>
+                                            <th>Ngày ký gửi</th>
+                                            <th>Id cư dâ</th>
+                                            <th>Loại xe</th>
+                                            <th style="width: 10%">Cập nhật</th>
+                                            <th style="width: 10%">Xóa</th>
+                                        </tr>
+                                        </tfoot>
+                                        <tbody>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <footer class="footer">
+            <div class="container-fluid">
+                <div class="pull-left"></div>
+                <div class="copyright ml-auto">
+                    Version 1.0
+                </div>
+            </div>
+        </footer>
+        <script th:src="@{/assets/quanly/js/find-data-select.js}"></script>
+        <script th:src="@{/assets/quanly/js/cu-dan/xe.js}"></script>
+    </div>
+</div>

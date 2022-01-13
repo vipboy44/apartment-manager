@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html  lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head th:replace="components/head"></head>
+<body  data-background-color="bg3">
+
+<div  class="wrapper  ">
+    <div th:replace="components/main-header"></div>
+
+    <div  th:replace="components/sidebar"></div>
+
+    <div id="content"layout:fragment="content"></div>
+
+    <div th:replace="components/custom-template"></div>
+    <button  type="button" id="btnScollTop"><i class="fas fa-arrow-up"></i></button>
+    <div th:replace="quanly/nhan-vien/form-doi-mat-khau"></div>
+    <div th:replace="quanly/form-gui-email"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+data-layout-decorate="~{/layout-admin}">
+<!-------------------------------------------------------------------------------------------->
+<div layout:fragment="content">
+    <!-------------------- Header--------------->
+    <div class="row">
+        <a class="title"> Quản Lý Xe Đăng Ký Gửi</a>
+        <div th:replace="components/header"></div>
+    </div>
+    <!-------------------------------------- Danh sách xe----------------------------->
+    <div class="card"  >
+        <!-------------------------- card title table --------------->
+        <div class="card-header" style="border-radius: 6px;">
+            <div class="card-titles">
+                <h6 style="color: white">
+                <i class="fas fa-bicycle mr-1"></i>
+                <i class="fas fa-motorcycle mr-1"></i>
+                <i class="fas fa-car mr-3"></i>
+                 Danh sách Xe Đăng ký Gửi </h6>
+            </div>
+        </div>
+        <!------------------------------------------------------------->
+        <div class="card-body">
+            <!--------------------------card-body-table---------------->
+            <table class="table  table-condensed table-responsive-xl table-striped" id="table-vehicle">
+                <thead>
+                <tr>
+                    <th> ID</th>
+                    <th>Biển Số Xe</th>
+                    <th> Màu xe</th>
+                   <th>Ngày Đăng Ký</th>
+                    <th>Chủ Sỡ Hữu</th>
+                    <th>Loại Xe</th>
+                    <th> Cập Nhật</th>
+                    <th> Xóa</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+            <!------------------------------------------------------>
+        </div>
+    </div>
+    <!---------------------------------------- Form modal Xe ---------------------------------->
+    <div class="modal fade" id="form-vehicle" tabindex="-1"
+         role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <!------------------- Header-modal -------------->
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-bicycle mr-1"></i>
+                        <i class="fas fa-motorcycle mr-1"></i>
+                        <i class="fas fa-car mr-3"></i>
+                        Thông Tin Xe của cư dân </h5>
+                    <i class="material-icons " data-dismiss="modal">close</i>
+                </div>
+                <!------------------- body-modal ---------------->
+                <div class="modal-body">
+                    <form>
+
+                        <div class="row">
+                            <!------------- loai xe --------------->
+                            <div>
+                                <select style="width: 225px;margin: 2px 0 0 12px;padding-bottom: 12px;" id="type"
+                                        class="input-select">
+                                    <option th:each="t : ${TypeVehicles}" th:value="${t.id}" th:text="${t.name}"/>
+                                </select>
+                            </div>
+                            <!------------- bien so xe --------------->
+                            <div class="input-container">
+                                <input type="number" id="idVehicle" hidden="true" required="required"/>
+                                <input type="text" required="required" name="licensePlates" id="licensePlates"
+                                       style="width:230px"/>
+                                <label for="licensePlates">Biển số xe</label>
+                            </div>
+                            <!----------------- MAU XE --------------->
+                            <div class="input-container">
+                                <input type="text" required="required" name="color" id="color" style="width:106px"/>
+                                <label for="color">Màu</label>
+                            </div>
+                            <!------------------------ Ngày Sinh ---------------------------->
+                            <div class="input-container">
+                                <input type="date" required="required" name="date" id="date"
+                                       style="width:210px">
+                                <label for="date">Ngày đăng ký</label>
+                            </div>
+                            <!------------------- id cư dan ------------>
+                            <div class="input-container">
+                                <input type="text" required="required" name="idResident" id="idResident"
+                                       style="width:120px"/>
+                                <label for="idResident">ID cư dân</label>
+                            </div>
+                            <!---------------------------------------->
+                        </div>
+                        <!------------------------------------ End row ----------------------->
+                    </form>
+                </div>
+                <!------------------ footer-modal ----------------->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="save-vehicle">
+                        <i class="fas fa-save mr-2"></i> Lưu Lại
+                    </button>
+                    <button type="button" class="btn btn-danger" id="clean-form-vehicle">
+                        <i class=" icon-btn fas fa-sync-alt mr-2"></i>Làm Mới
+                    </button>
+                </div>
+                <!------------------------------------------------->
+            </div>
+        </div>
+    </div>
+    <script th:src="@{/static/assets/cu-dan/xe.js}" type="text/javascript"></script>
+</div>

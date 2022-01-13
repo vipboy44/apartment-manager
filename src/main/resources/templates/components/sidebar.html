@@ -1,0 +1,145 @@
+<!-- Sidebar -->
+    <div class="sidebar sidebar-style-2" data-background-color="dark2" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="sidebar-wrapper scrollbar scrollbar-inner">
+        <div class="sidebar-content">
+            <ul class="nav nav-primary">
+                <li  class="nav-item  sidebar-menu " id="home" >
+                    <a th:href="@{/quan-ly}" >
+                        <i class="fas fa-home"></i>
+                        <p>QUẢN LÝ</p>
+                    </a>
+                </li>
+                <li class="nav-section">
+                    <span class="sidebar-mini-icon"><i class="fa fa-ellipsis-h"></i></span>
+                 <!--   <h4 class="text-section"><menu></menu></h4>  --> 
+                </li>
+                <li class="nav-item">
+                    <a data-toggle="collapse" href="#base">
+                        <i class="fas fa-building"></i>
+                        <p>CĂN HỘ</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="base">
+                        <ul class="nav nav-collapse">
+                            <li class="sidebar-menu" id="menu-quan-ly-can-ho">
+                                <a  th:href="@{/quan-ly/can-ho}">
+                                    <span class="sub-item"> Danh sách căn hộ</span>
+                                </a>
+                            </li>
+                            <li  class="sidebar-menu" id="menu-quan-ly-chu-can-ho">
+                                <a  th:href="@{/quan-ly/chu-can-ho}" >
+                                    <span class="sub-item"> Danh sách chủ căn hộ</span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a data-toggle="collapse" href="#sidebarLayouts">
+                        <i class="fas fa-id-card"></i>
+                        <p>CƯ DÂN</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="sidebarLayouts">
+                        <ul class="nav nav-collapse">
+                            <li class="sidebar-menu" id="menu-quan-cu-dan">
+                                <a th:href="@{/quan-ly/cu-dan}">
+                                    <span class="sub-item">Danh sách cư dân</span>
+                                </a>
+                            </li>
+                            <li  class="sidebar-menu" id="menu-quan-ly-xe">
+                                <a th:href="@{/quan-ly/xe}">
+                                    <span class="sub-item">Xe ký gửi</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item " >
+                    <a data-toggle="collapse" href="#forms">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                        <p>BẢNG GIÁ</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="forms">
+                        <ul class="nav nav-collapse">
+                            <li  class="sidebar-menu" id="menu-quan-ly-gia-dien">
+                                <a th:href="@{/quan-ly/bang-gia/gia-dien}">
+                                    <span class="sub-item">Bảng giá điện</span>
+                                </a>
+                            </li>
+                            <li  class="sidebar-menu" id="menu-quan-ly-gia-nuoc">
+                                <a th:href="@{/quan-ly/bang-gia/gia-nuoc}">
+                                    <span class="sub-item">Bảng giá nước</span>
+                                </a>
+                            </li>
+                            <li  class="sidebar-menu" id="menu-quan-ly-phi-quan-ly">
+                                <a th:href="@{/quan-ly/bang-gia/phi-quan-ly}">
+                                    <span class="sub-item">Bảng phí quản lý</span>
+                                </a>
+                            </li>
+                            <li  class="sidebar-menu" id="menu-quan-ly-phi-rac">
+                                <a th:href="@{/quan-ly/bang-gia/phi-rac}">
+                                    <span class="sub-item">Bảng phí rác</span>
+                                </a>
+                            </li>
+                            <li  class="sidebar-menu" id="menu-quan-ly-phi-gui-xe">
+                                <a th:href="@{/quan-ly/bang-gia/phi-gui-xe}">
+                                    <span class="sub-item">Bảng phí gửi xe</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>      
+                 <li class="nav-item">
+                    <a data-toggle="collapse" href="#sidebar">
+                         <i class="fas fa-table"></i>
+                        <p>HÓA ĐƠN</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="sidebar">
+                        <ul class="nav nav-collapse">
+                            <li class="sidebar-menu" id="menu-danh-sach-hoa-don">
+                                <a th:href="@{/quan-ly/hoa-don}">
+                                    <span class="sub-item">Danh sách hóa đơn</span>
+                                </a>
+                            </li>
+                            <li  class="sidebar-menu" id="menu-hoa-don-chua-thanh-toan">
+                               <a th:href="@{/quan-ly/hoa-don/chua-thanh-toan}">
+                                    <span class="sub-item">Danh sách hóa đơn chưa thanh toán</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                
+                <li  class="sidebar-menu nav-item" id="menu-quan-ly-nhan-vien" >
+                    <a th:href="@{/quan-ly/nhan-vien}">
+                        <i class="fas fa-user"></i>
+                        <p>NHÂN VIÊN</p>
+                    </a>
+                </li>
+                <li class="nav-item sidebar-menu  " id="menu-quan-ly-thong-bao">
+                    <a th:href="@{/quan-ly/thong-bao}">
+                        <i class="fas fa-newspaper"></i>
+                        <p>THÔNG BÁO</p>
+                    </a>
+                </li>
+                <li class="nav-item  sidebar-menu  " id="menu-quan-ly-noi-quy">
+                    <a th:href="@{/quan-ly/noi-quy}">
+                        <i class="far fa-chart-bar"></i>
+                        <p>NỘI QUY</p>
+                    </a>
+                </li>
+<!--                <li class="nav-item">-->
+<!--                    <a data-toggle="collapse" href="#charts">-->
+<!--                        <i class="fas fa-rss-square"></i>-->
+<!--                        <p>LiÃªn Há»‡</p>-->
+<!--                    </a>-->
+<!--                </li>-->
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- End Sidebar -->

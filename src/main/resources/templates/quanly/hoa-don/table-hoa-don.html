@@ -1,0 +1,233 @@
+<div data-layout-decorate="~{layout-admin}" layout:fragment="content" xmlns:th="http://www.w3.org/1999/xhtml"
+     xmlns:layout="http://www.w3.org/1999/xhtml">
+    <div class="main-panel">
+        <div class="content">
+            <div class="page-inner">
+                <div class="page-header">
+                    <h4 class="page-title">Quản lý hóa đơn</h4>
+                    <ul class="breadcrumbs">
+                        <li class="nav-home">
+                            <a th:href="@{/quan-ly}">
+                                <i class="flaticon-home"></i>
+                            </a>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a>Hóa đơn</a>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a>Danh sách hóa đơn </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="d-flex flex-wrap align-items-center">
+                                    <h4 class="card-title mt-1 ">Danh sách hóa đơn</h4>
+                                    <button class="btn btn-sm btn-success btn-round ml-auto mt-1 " data-toggle="modal"
+                                            data-target="#form-building">
+                                        <i class="fa fa-plus"></i>
+                                        Thêm mới
+                                    </button>
+                                    &ensp; <!-- th:href="@{/quan-ly/hoa-don/export-excel}" -->
+                                    <a data-toggle="modal" data-target="#form-building2">
+                                        <button class="btn btn-sm btn-primary btn-round ml-auto  mt-1 ">
+                                            <i class="fas fa-download"></i>
+                                            Xuất file excel
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- Modal -->
+                            <div class="modal fade" id="form-building2" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header no-bd">
+                                            <h5 class="modal-title" id="form-label">
+                                                XUẤT EXCEL HÓA ĐƠN
+                                            </h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form th:action="@{/quan-ly/hoa-don/export-excel/month}" method="GET">
+                                                <button type="button" class="btn btn-primary"
+                                                        style="width: 10px; height: 10px;"></button>
+                                                <button type="button" class="btn btn-secondary"></button>
+                                                <button type="button" class="btn btn-success"></button>
+                                                <button type="button" class="btn btn-danger"></button>
+                                                <button type="button" class="btn btn-warning"></button>
+                                                <button type="button" class="btn btn-info"></button>
+                                                <button type="button" class="btn btn-dark"></button>
+                                                <p style="color: #FFAD46;">Chọn tháng & năm để xuất excel theo tháng.
+                                                    Hoặc xuất tất cả
+                                                    <a th:href="@{/quan-ly/hoa-don/export-excel/all}">tại đây!</a></p>
+                                                <div class="row ">
+                                                    <div class="col-md-6 pl-2">
+                                                        <div class="form-group form-group-default">
+                                                            <label>Tháng</label>
+                                                            <select name="month" class="form-control"
+                                                                    id="select_month"></select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 pl-2 ">
+                                                        <div class="form-group form-group-default">
+                                                            <label>Năm</label>
+                                                            <select name="year" class="form-control"
+                                                                    id="select_year"></select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <div class="row" style="float:right;">
+                                                    <button class="btn btn-success btn-sm" type="submit">
+                                                        <i class="fas fa-download"></i>
+                                                        Xuất file
+                                                    </button> &ensp;
+                                                    <button type="button" class="btn btn-danger mr-3 btn-sm"
+                                                            data-dismiss="modal">
+                                                        <i class="fas fa-times"></i>
+                                                        Hủy bỏ
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-body">
+                                <!-- Modal -->
+                                <div class="modal fade" id="form-building" tabindex="-1" role="dialog"
+                                     aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header no-bd">
+                                                <h5 class="modal-title">
+                                                    <i class="fas fa-file-invoice-dollar mr-2 "></i>
+                                                    Thêm hóa đơn
+                                                </h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form>
+                                                    <div class="row">
+                                                        <div class="col-md-5 pl-2">
+                                                            <div class="form-group form-group-default">
+
+                                                                <input type="number" id="id" hidden="true"
+                                                                       required="required"/>
+                                                                <!--
+                                                                <label>Căn hộ </label>
+                                                                <input id="id-apartment" type="text" class="form-control" placeholder="Id căn hộ">
+                                                                -->
+                                                                <label>Căn hộ </label>
+                                                                <select class="form-control" style="width: 100%"
+                                                                        id="apartment_id">
+                                                                    <option></option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-7 pl-2">
+                                                            <div class="form-group form-group-default">
+                                                                <label>Ngày tạo</label>
+                                                                <input id="date-insert" type="date" class="form-control"
+                                                                       placeholder="Ngày tạo">
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-5 pl-2">
+                                                            <div class="form-group form-group-default">
+                                                                <label>Số điện</label>
+                                                                <input id="electricity-insert" min="0" type="number"
+                                                                       class="form-control" placeholder="Số điện mới">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-7 pl-2">
+                                                            <div class="form-group form-group-default">
+                                                                <label>Số nước</label>
+                                                                <input id="water-insert" min="0" type="number"
+                                                                       class="form-control" placeholder="Số nước mới"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer no-bd">
+                                                <button type="button" id="insert" class="btn btn-primary btn-sm">
+                                                    <i class="fas fa-save"></i>
+                                                    Lưu lại
+                                                </button>
+                                                <button type="button" id="clean-form-insert"
+                                                        class="btn btn-danger btn-sm">
+                                                    <i class="fas fa-sync-alt"></i>
+                                                    Làm mới
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="table-responsive">
+                                    <table id="my-table" class="display table table-striped table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Căn hộ</th>
+                                            <th>Ngày tạo</th>
+                                            <th>Tổng tiền</th>
+                                            <th>Ngày tạo</th>
+                                            <th>Trạng thái</th>
+                                            <th>Chi tiết</th>
+                                            <th>Xóa</th>
+                                        </tr>
+                                        </thead>
+                                        <tfoot>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Căn hộ</th>
+                                            <th>Ngày</th>
+                                            <th>Tổng tiền</th>
+                                            <th>Ngày tạo</th>
+                                            <th>Trạng thái</th>
+                                            <th>Chi tiết</th>
+                                            <th>Xóa</th>
+                                        </tr>
+                                        </tfoot>
+                                        <tbody>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="pull-left"></div>
+                <div class="copyright ml-auto">
+                    Version 1.0
+                </div>
+            </div>
+        </footer>
+        <script th:src="@{/assets/quanly/js/find-data-select.js}"></script>
+        <script th:src="@{/assets/quanly/js/hoa-don/hoadon.js}"></script>
+        <script th:src="@{/assets/quanly/js/hoa-don/export-excel.js}"></script>
+    </div>
+</div>

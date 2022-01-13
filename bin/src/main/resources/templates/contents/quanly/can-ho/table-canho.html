@@ -1,0 +1,213 @@
+<div lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     data-layout-decorate="~{/layout-admin}">
+    <!-------------------------------------------------------------------------------------------->
+
+    <div layout:fragment="content">
+        <!------------------------------------------- Header----------------------------------->
+        <div class="row">
+            <a class="title"> Quản lý căn hộ</a>
+            <div th:replace="components/header"></div>
+        </div>
+        <!----------------------------------------- TABLE CÄƒn há»™ ----------------------------->
+        <div class="card"  >
+            <!---------------------------------- card title table ----------------------------->
+            <div class="card-header" style="border-radius: 6px;">
+                <div class="card-titles">
+                    <h6 style="color: white"> <i class="fas fa-building mr-3"></i> Danh sách căn hộ</h6>
+                </div>
+            </div>
+            <!----------------------------------- card-body-table ---------------------------->
+            <div class="card-body">
+                <table class="table  table-condensed table-responsive-xl table-striped" id="my-table">
+                    <thead>
+                    <tr>
+                        <th>
+                            ID
+                        </th>
+                        
+                        <th>
+                            ID chủ căn hộ
+                        </th>
+                   
+                        <th>
+                            Vị trí
+                        </th>
+                        <th>
+                            Diện tích
+                        </th>
+                        <th>
+                            Password
+                        </th>
+                        <th>
+                            Cập nhật
+                        </th>
+                        <th>
+                            Xóa
+                        </th>
+                    </tr>
+                    </thead>
+                </table>
+                <!------------------------------- button open modal form  ---------------------------->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#form-building">
+                    <i class="icon-btn fa fa-plus"></i> Thêm căn hộ
+                </button>
+            </div>
+        </div>
+        <!------------------------------------------------ Form modal Insert ---------------------------------->
+        <div class="modal fade" id="form-building" tabindex="-1"
+             role="dialog" aria-labelledby="form-label" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <!-------------------------------------- Header-modal ------------------------------------->
+                    <div class="modal-header">
+                        <h5 class="modal-title"><i class='fas fa-building mr-3'></i> Thêm căn hộ </h5>
+                        <i class="material-icons "  data-dismiss="modal">close</i>
+                    </div>
+                    <!----------------------------------------- body-modal ------------------------------------->
+                    <div class="modal-body">
+                        <form>
+                            <div class="row">
+                                <!------------------------------ ID Can ho ------------------------------------->
+                                <div class="input-container">
+                                    <input type="text"  required="required" name="id" id="id"
+                                           style="width:100px"/>
+                                    <label for="id">ID </label>
+                                </div>
+
+                                <!-------------------------------- password ------------------------------------>
+                                <div class="input-container">
+                                    <input type="password"  required="required" name="password" id="password" style="width:230px">
+                                    <label for="password">Password</label>
+                                </div>
+                                <!------------------------------- id chá»§ há»™ ------------------------------------->
+                                <div class="input-container">
+                                    <input type="text"  required="required" name="id_own" id="id_own" style="width:100px">
+                                    <label for="id_own">Chủ căn hộ</label>
+                                </div>
+
+                            </div>
+                            <!---------------------------- End row ----------------------->
+                            <div class="row">
+                                <!-------------------------------- Diá»‡n TÃ­ch ------------------------------------>
+                                <div class="input-container">
+                                    <input type="number" min="0"  required="required" name="acreage" id="acreage"
+                                           style="width:100px"/>
+                                    <label for="acreage">Diện tích <i style="font-size:14px;">(m2)</i></label>
+                                </div>
+
+                                <!------------------------------- Vá»‹ trÃ­  -------------------------------------->
+                                <div class="input-container">
+                                    <input type="text"  required="required" name="location" id="location"
+                                           style="width:350px">
+                                    <label for="location"> Vị trí</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <!------------------------------- Ghi Chu -------------------------------------->
+                                <div class="input-container">
+								<textarea style="width: 465px" id="note" name="note"
+                                          required="required" rows="3"></textarea>
+                                    <label for="note">Ghi chú</label>
+                                </div>
+                            </div>
+                            <!------------------------------------ End row -------------------------------------->
+                        </form>
+                    </div>
+                    <!----------------------------------------- footer-modal -------------------------------------->
+                    <div class="modal-footer">
+                        <button style="width: 115px" type="button" class="btn btn-success"  id="insert">
+                            <i class="fas fa-save mr-2"></i> Lưu Lại
+                        </button>
+                        <button style="width: 115px" type="button" class="btn btn-danger" id="clean-form">
+                            <i class=" icon-btn fas fa-sync-alt mr-2"></i>Làm Mới
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!------------------------------------------------ Form modal update ---------------------------------->
+        <div class="modal fade" id="form-update" tabindex="-1"
+             role="dialog" aria-labelledby="form-label" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <!-------------------------------------- Header-modal ------------------------------------->
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="title-update"> </h5>
+                        <i class="material-icons "  data-dismiss="modal">close</i>
+                    </div>
+                    <!----------------------------------------- body-modal ------------------------------------->
+                    <div class="modal-body">
+                        <form>
+                            <!------------------------------ ID Can ho ------------------------------------->
+                            <input type="text"  required="required" name="id" id="id-update" hidden="true" >
+                            <div class="row">
+                                <!-------------------------------- password ------------------------------------>
+                                <div class="input-container">
+                                    <input type="password"  required="required" name="password" id="password-update" style="width:230px">
+                                    <label for="password-update">Password</label>
+                                </div>
+                                <!------------------------------- id chá»§ há»™ ------------------------------------->
+                                <div class="input-container">
+                                    <input type="text"  required="required" name="id_own" id="id-own-update" style="width:220px">
+                                    <label for="id-own-update">Chủ căn hộ</label>
+                                </div>
+
+                            </div>
+                            <!---------------------------- End row ----------------------->
+                            <div class="row">
+                                <!-------------------------------- Diá»‡n TÃ­ch ------------------------------------>
+                                <div class="input-container">
+                                    <input type="number" min="0"  required="required" name="acreage" id="acreage-update"
+                                           style="width:100px"/>
+                                    <label for="acreage-update">Diện tích <i style="font-size:14px;">(m2)</i></label>
+                                </div>
+
+                                <!------------------------------- Vá»‹ trÃ­  -------------------------------------->
+                                <div class="input-container">
+                                    <input type="text"  required="required" name="location" id="location-update"
+                                           style="width:350px">
+                                    <label for="location-update"> Vị trí</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <!------------------------------- Ghi Chu -------------------------------------->
+                                <div class="input-container">
+								<textarea style="width: 465px" id="note-update" name="note"
+                                          required="required" rows="3"></textarea>
+                                    <label for="note-update">Ghi Chú</label>
+                                </div>
+                            </div>
+                            <!------------------------------------ End row -------------------------------------->
+                        </form>
+                    </div>
+                    <!----------------------------------------- footer-modal -------------------------------------->
+                    <div class="modal-footer">
+                        <button style="width: 115px" type="button" class="btn btn-success"  id="update">
+                            <i class="fas fa-save mr-2"></i> Lưu Lại
+                        </button>
+                        <button style="width: 115px" type="button" class="btn btn-danger" id="clean-form-update">
+                            <i class=" icon-btn fas fa-sync-alt mr-2"></i>Làm Mới
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+        <script th:src="@{/assets/js/can-ho/canho.js}" type="text/javascript"></script>
+    </div>
+</div>
+<!-------------------------------------------------------- End Div content ------------------------------------------->

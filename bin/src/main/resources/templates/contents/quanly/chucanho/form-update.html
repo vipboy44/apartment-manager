@@ -1,0 +1,141 @@
+<div lang="en" xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     data-layout-decorate="~{/layout-admin}">
+    <!-------------------------------------------------------------------------------------------->
+
+    <div layout:fragment="content">
+        <!------------------------------------------ Header -------------------------->
+        <div class="row">
+            <a class="title"> Cập nhật chủ căn hộ </a>
+            <div th:replace="components/header"></div>
+        </div>
+        <!-- ----------------------------------- Form  ThÃ´ng tin chá»§ cÄƒn há»™ ----------------------------- -->
+        <div class="row">
+            <div class="card col-sm-8">
+                <!-- --------------------------------- card title form ---------------------->
+                <div class="card-header" style="border-radius: 6px">
+                    <div class="card-titles">
+                        <h6 style="color: white">
+                            <i class="fas fa-address-card mr-3"></i> Thông tin chủ căn hộ
+                        </h6>
+                    </div>
+                </div>
+                <!-- ---------------------------------- card body form -------------------------->
+                <div class="card-body" style="padding: 30px 0;">
+
+                    <form>
+                        <input type="text" id="id_own" th:value="${idOwn}" hidden="true">
+                        <div class="row">
+                            <!------------------------- Há»� TÃªn ------------------------------->
+                            <div class="input-container col-sm-4" style="padding: 0;">
+                                <input type="text" required="required" name="fullname"
+                                       id="fullname" style="width: 100%"/> <label for="fullname">Họ
+                                tên</label>
+                            </div>
+                            <!------------------------ NgÃ y Sinh ------------------------------>
+                            <div class="input-container col-sm-4" style="padding: 0;">
+                                <input type="date" required="required" name="birthday" min='2020-01-01'
+                                       id="birthday" style="width: 100%"> <label
+                                    for="birthday">Ngày sinh</label>
+                            </div>
+                            <!------------------------- gioi tinh ---------------------------->
+                            <div style="margin: 15px 0 0 36px">
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="male" name="gender" value="male"
+                                           class="custom-control-input"> <label
+                                        class="custom-control-label" for="male">Nam</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="female" name="gender" value="female"
+                                           class="custom-control-input"> <label
+                                        class="custom-control-label" for="female">Nữ</label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-------------------------------- div End row ----------------------->
+                        <div class="row">
+                            <!----------------------------- QuÃª QuÃ¡n  ---------------------------->
+                            <div class="input-container col-sm-4" style="padding: 0;">
+                                <input type="text" required="required" name="homeTown"
+                                       id="homeTown" style="width: 100%"/> <label for="homeTown">Quê
+                                quán</label>
+                            </div>
+                            <!----------------------------- CMND ------------------------------>
+                            <div class="input-container col-sm-4" style="padding: 0;">
+                                <input type="text" required name="identityCard"
+                                       id="identityCard" style="width: 100%"> <label
+                                    for="identityCard">CMND</label>
+                            </div>
+                            <!------------------------------ Ä�iá»‡n Thoáº¡i ------------------------>
+                            <div class="input-container col-sm-3" style="padding: 0;">
+                                <input type="text" required="required" name="phone" id="phone"
+                                       style="width: 100%"/> <label for="phone">Số điện
+                                thoại</label>
+                            </div>
+
+                        </div>
+	
+
+                        <!------------------------------------ End row ------------------------>
+                        <div class="row">
+                            <!--------------------------------- Nghá»� Nghiá»‡p ----------------->
+                            <div class="input-container col-sm-4" style="padding: 0;">
+                                <input type="text" required="required" name="job" id="job"
+                                       style="width: 100%"/> <label for="job">Nghề nghiệp</label>
+                            </div>
+                            <!----------------------------------- Email ----------------------->
+                            <div class="input-container col-sm-4" style="padding: 0;">
+                                <input type="email" required="required" name="email" id="email"
+                                       style="width: 100%;"/> <label for="email">Email</label>
+                            </div>
+                            <!------------------------------ Can ho so huu------------------------>
+                            <div class="input-container col-sm-3" style="padding: 0;">
+                                <input type="text" required name="id_apartment"
+                                       id="id_apartment" style="width: 100%"/> <label for="phone">Căn
+                                hộ</label>
+                            </div>
+
+                        </div>
+                        <div style="margin: 33px 0 0 0" class="float-right">
+                            <button style="width: 115px" type="button" class="btn btn-success" id="save">
+                                <i class="fas fa-save mr-2"></i> Lưu Lại
+                            </button>
+                            <a th:href="@{/ui/own-apartment}">
+                                <button style="width: 115px" type="button" class="btn btn-warning"
+                                        data-toggle="modal" data-target="#modal-vehicel">
+                                    <i class="fas fa-sign-out-alt mr-2"></i> Thoát
+                                </button>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+            <!------------------------------------- card image ----------------------------------->
+            <div class="card col-sm-3"
+                 style="width: 200px; height: 356px; margin-left: 30px; padding: 0;">
+                <!------------------------------------ hÃ¬nh áº£nh  ---------------------------------->
+                    <a class="img" style="margin-top: 15px">
+                        <img class="rounded-circle mx-auto d-block" id="imgs" th:src="@{/assets/photo/someone.png}">
+                    </a>
+                <form id="file-upload-form">
+                    <button type="submit" id="upload-now" hidden="true">Start
+                        Upload
+                    </button>
+                    <input type="file" hidden="true" name="file" id="file"
+                           onchange="readURL(this);" accept="image/*">
+                </form>
+                <!------------------------------------------------>
+                <div class="card-title-name">
+                    <h5 id="name-formImg"></h5>
+                    <h6 style="margin-left: 5px" id="email-formImg"></h6>
+                </div>
+                <div class="card-body-information"></div>
+            </div>
+        </div>
+        <script th:inline="javascript"
+                th:src="@{/assets/js/own-apartment/update.js}" type="text/javascript"></script>
+    </div>
+	
+</div>
+<!-------------------------------------------------- End Div content ------------------------------------------------->

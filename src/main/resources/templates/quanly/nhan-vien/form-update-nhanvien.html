@@ -1,0 +1,191 @@
+<div data-layout-decorate="~{layout-admin}" layout:fragment="content"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="https://www.thymeleaf.org">
+    <div class="main-panel">
+        <div class="content">
+            <div class="page-inner">
+                <div class="page-header">
+                    <h4 class="page-title">Quản lý nhân viên</h4>
+                    <ul class="breadcrumbs">
+                        <li class="nav-home">
+                            <a th:href="@{/quan-ly}">
+                                <i class="flaticon-home"></i>
+                            </a>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a >Nhân viên</a>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a >Thông tin nhân viên</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="d-flex align-items-center">
+                                    <h4 class="card-title">Thông tin nhân viên</h4>               
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-8">
+                                        <form>
+                                            <div class="row">
+                                                <div class="col-md-6 pl-2">
+                                                    <div class="form-group form-group-default">
+                                                        <input hidden="true" id="id_employee" th:value="${idEmployee}" type="text">
+                                                        <label>Họ tên</label>
+                                                        <input class="form-control" id="fullName" placeholder="Họ & tên" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 pl-2">
+                                                    <div class="form-group form-group-default">
+                                                        <label>Ngày sinh </label>
+                                                        <input class="form-control" id="birthday" placeholder="Ngày sinh" type="date">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 pl-2">
+                                                    <div class="form-group form-group-default">
+                                                        <label>CMND</label>
+                                                        <input class="form-control" id="identitycard" placeholder="Số chứng minh thư" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 pl-2">
+                                                    <div class="form-group form-group-default">
+                                                        <label>Điện thoại</label>
+                                                        <input class="form-control" id="phone" placeholder="Số điện thoại" type="text">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4 pl-2">
+                                                    <div class="form-group form-group-default">
+                                                        <label class="mb-1">Giới tính </label>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input class="custom-control-input" id="male"
+                                                                   name="gender"
+                                                                   type="radio" value="male">
+                                                            <label class="custom-control-label"
+                                                                   for="male">Nam</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input class="custom-control-input" id="female"
+                                                                   name="gender"
+                                                                   type="radio"
+                                                                   value="female">
+                                                            <label class="custom-control-label"
+                                                                   for="female">Nữ</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-8 pl-2">
+                                                    <div class="form-group form-group-default">
+                                                        <label>Địa chỉ</label>
+                                                        <input class="form-control" id="address"
+                                                               placeholder="Địa chỉ"
+                                                               type="text">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12 pl-2">
+                                                    <div class="form-group form-group-default">
+                                                        <label>E-mail</label>
+                                                        <input class="form-control" id="email"
+                                                               placeholder="Địa chỉ email"
+                                                               type="text">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 pl-2">
+                                                    <div class="form-group form-group-default">
+                                                        <label>Tên đăng nhập</label>
+                                                        <input class="form-control" id="username"
+                                                               placeholder="Tên đăng nhập"
+                                                               type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 pl-0">
+                                                    <div class="form-check form-check-inline ml-3">
+                                                        <input class="form-check-input"
+                                                               id="role-admin"
+                                                               style="position:initial !important;"
+                                                               type="checkbox" value="admin">
+                                                        <label class="form-check-label  mt-2 ml-2"
+                                                               for="role-admin">Admin</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline ml-3">
+                                                        <input class="form-check-input"
+                                                               id="role-user"
+                                                               style="position:initial !important;"
+                                                               type="checkbox" value="user">
+                                                        <label class="form-check-label mt-2 ml-2"
+                                                               for="role-user">Nhân viên</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4">
+                                        <div class="avatar-lg mt-1" style="width: 300px; height: 350px;" >
+                                            <img alt="image profile" class="avatar-img rounded" id="imgs"
+                                               th:src="@{/assets/quanly/image/someone.png}">
+                                            <form id="file-upload-form" enctype="multipart/form-data">
+                                                <button hidden="true" id="upload-now" type="submit">Start
+                                                    Upload
+                                                </button>
+                                                <input accept="image/*" hidden="true" id="file" name="file"
+                                                       onchange="readURL(this);" type="file">
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="float-right ">
+                                    <button class="btn btn-secondary btn-sm mt-2 mr-2" id="reset-password" type="button">
+                                        <i class="fas fa-key"></i>
+                                        Khôi phục mật khẩu
+                                    </button>
+                                     <button class="btn btn-primary btn-sm mt-2  mr-2" id="clean-form" type="button">
+                                          <i class="fas fa-sync-alt"></i>
+                                       Làm mới
+                                    </button>
+                                    <button class="btn btn-success btn-sm mt-2 mr-2" id="save" type="button">
+                                        <i class="fas fa-save"></i>
+                                        Lưu lại
+                                    </button>                          
+                                     <a class="ml-auto" th:href="@{/quan-ly/nhan-vien}">
+                                        <button class="btn btn-danger  btn-sm  mt-2 mr-2"  type="button">
+                                            <i class="fas fa-sign-out-alt"></i>
+                                            Thoát
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+          <footer class="footer">
+            <div class="container-fluid">
+                <div class="pull-left"></div>
+                <div class="copyright ml-auto">
+                    Version 1.0
+                </div>
+            </div>
+        </footer>
+
+        <script th:src="@{/assets/quanly/js/nhan-vien/update.js}"></script>
+    </div>
+</div>

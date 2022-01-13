@@ -1,0 +1,10 @@
+diff a/bin/src/main/resources/templates/contents/quanly/bang-gia/table-gianuoc.html b/bin/src/main/resources/templates/contents/quanly/bang-gia/table-gianuoc.html	(rejected hunks)
+@@ -96,6 +96,6 @@
+ 			</div>
+ 		</div>
+ 	</div>
+-	<script th:src="@{/assets/js/gianuoc.js}" type="text/javascript"></script>
++	<script th:src="@{/static/assets/js/bang-gia/gianuoc.js}" type="text/javascript"></script>
+ </div>
+ <!-------------------------------------------------------- End Div content ------------------------------------------->
+\ No newline at end of file

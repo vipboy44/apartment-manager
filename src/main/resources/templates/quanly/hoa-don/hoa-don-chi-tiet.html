@@ -1,0 +1,175 @@
+<div data-layout-decorate="~{layout-admin}" layout:fragment="content" xmlns:th="http://www.w3.org/1999/xhtml"
+     xmlns:layout="http://www.w3.org/1999/xhtml">
+    <div class="main-panel">
+        <div class="content">
+            <div class="page-inner">
+                <div class="page-header">
+                    <h4 class="page-title">Quản lý hóa đơn</h4>
+                    <ul class="breadcrumbs">
+                        <li class="nav-home">
+                            <a th:href="@{/quan-ly}">
+                                <i class="flaticon-home"></i>
+                            </a>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a >Hóa đơn</a>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a >Danh sách hóa đơn </a>
+                        </li>
+                         <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a >Chi tiết hóa đơn </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="d-flex align-items-center float-right">
+                                    <h4 class="card-title " id="date-detail"> </h4>                         
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="modal fade" id="form-building"  tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header no-bd">
+                                                <h5 id="title-detail" class="modal-title">
+                                                    Cập nhật hóa đơn
+                                                </h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form>
+                                                    <div class="row">
+                                                        <div class="col-md-6 pl-2">
+                                                            <div class="form-group form-group-default">
+                                                                <label>Số điện mới</label>
+                                                                <input id="electricityNumber" type="text" class="form-control" placeholder="Số điện mới">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 pl-2">
+                                                            <div class="form-group form-group-default">
+                                                                <label>Ngày tạo</label>
+                                                                <input id="date" type="date" class="form-control" placeholder="Ngày tạo">
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6 pl-2">
+                                                            <div class="form-group form-group-default">
+                                                                <label>Số nước mới</label>
+                                                                <input id="waterNumber" min="0" type="number" class="form-control" placeholder="Số nước mới">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 pl-2">
+                                                            <div class="form-group form-group-default">
+                                                                <label>Xe đạp</label>
+                                                                <input id="bicycleNumber" min="0" type="number" class="form-control" placeholder="Số lượng xe đạp"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6 pl-2">
+                                                            <div class="form-group form-group-default">
+                                                                <label> Xe máy</label>
+                                                                <input id="motocycleNumber" min="0" type="number" class="form-control" placeholder="Số lượng xe máy">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 pl-2">
+                                                            <div class="form-group form-group-default">
+                                                                <label>Xe ô tô</label>
+                                                                <input id="carNumber" min="0" type="number" class="form-control" placeholder="Số lượng ô tô"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer no-bd">
+                                                <button type="button" id="save" class="btn btn-primary btn-sm">
+                                                    <i class="fas fa-save"></i>
+                                                 	 Lưu lại
+                                                </button>
+                                                <button type="button" id="clean-form" class="btn btn-danger btn-sm">
+                                                    <i class="fas fa-sync-alt"></i>
+                                                    Làm mới
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table-responsive" id="content-detail">      
+                                    <input id="id" type="text" hidden = "true"  th:value="${id}">
+                                    
+                                    
+                                    
+                                </div>
+                                <div class="float-right">
+                                    <button class="btn btn-success btn-sm mr-2" id="paid-true">
+                                        <i class="fa fa-plus"></i>
+                                        Đã thanh toán
+                                    </button>
+                                    <button class="btn btn-danger btn-sm mr-2" id="paid-false">
+                                        <i class="fas fa-times"></i>
+                                        Chưa thanh toán
+                                    </button>
+                                    <button   data-toggle="modal" data-target="#form-building" class="btn btn-warning btn-sm mr-2" id="update">
+                                        <i class="fas fa-edit"></i>
+                                        Cập nhật
+                                    </button>
+                                    <button   class="btn btn-primary btn-sm mr-2" id="btnPrint">       
+                                    <i class="fas fa-file-export"></i>
+                                       Xuất hóa đơn
+                                    </button>
+                                     <a th:href="@{/quan-ly/hoa-don}" class="ml-auto">
+                                        <button class="btn btn-danger btn-sm ml-auto" >
+                                            <i class="fas fa-sign-out-alt"></i>
+                                           Thoát
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+          <footer class="footer">
+            <div class="container-fluid">
+                <div class="pull-left"></div>
+                <div class="copyright ml-auto">
+                  Version 1.0
+                </div>
+            </div>
+        </footer>
+        <script th:src="@{/assets/quanly/js/hoa-don/detail.js}"></script>
+        <script th:src="@{/assets/quanly/js/hoa-don/view-detail.js}"></script>
+       <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	    <script type="text/javascript">
+	        $("#btnPrint").live("click", function () {
+	            var divContents = $("#content-detail").html();
+	            var date = document.getElementById("date-detail").textContent;
+	            var printWindow = window.open('', '', 'height=400,width=800');
+	            printWindow.document.write(`<html><head><title>Hóa đơn tháng ${date}</title>`);
+	            printWindow.document.write('</head><body >');
+	            printWindow.document.write(divContents);
+	            printWindow.document.write('</body></html>');
+	            printWindow.document.close();
+	            printWindow.print();
+	        });
+	    </script>
+    </div>
+</div>

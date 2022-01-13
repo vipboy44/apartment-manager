@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"
+            xmlns="http://www.w3.org/1999/xhtml"
+			xmlns:th="http://www.thymeleaf.org"
+		    xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+
+
+    <head th:replace="components/head.html"></head>
+    <body style="background-color: #f6f9fc">
+
+        <!-------------------------------------------------------------------->
+        <div class="wrapper d-flex align-items-stretch">
+            <!------------------------- Sidenavbar ----------------->
+            <div th:replace="components/sidenavbar.html"></div>
+            <!------------------------- Content ----------------->
+            <div id="content" class="p-4 p-ms-5 pt-5" layout:fragment="content">
+                <div th:replace="contents/quanly/dashboard">
+
+                </div>
+            </div>
+        </div>
+        <!-------------------------------------------------------------------->
+
+    </body>
+    <script th:src="@{/assets/vendor/Js/main.js}" type="text/javascript"></script>
+    <script type="text/javascript">
+        Waves.init();
+        Waves.attach('.float-buttons', ['waves-button', 'waves-float']);
+        Waves.attach('.btn');
+        Waves.attach('.fa');
+    </script>
+</html>

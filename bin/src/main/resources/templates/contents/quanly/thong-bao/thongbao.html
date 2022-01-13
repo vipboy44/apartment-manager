@@ -1,0 +1,43 @@
+<div lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+ data-layout-decorate="~{/layout-admin}">
+ <!-------------------------------------------------------------------------------------------->
+ <div layout:fragment="content">
+<div class="row">
+        <a class="title"> Quáº£n lÃ½ thÃ´ng bÃ¡o</a>
+        <div th:replace="components/header"></div>
+    </div>
+    
+    <!----------------------------------------- TABLE bÃ¡ÂºÂ£ng phÃƒÂ­ rÃƒÂ¡c ----------------------------->
+	<div class="card" style="width: 100%; margin-left: -3px">
+		<!---------------------------------- card title table ----------------------------->
+		<div class="card-header" style="border-radius: 6px;">
+			<div class="card-titles">
+				<h6 style="color: white">  <i class="fa fa-bell mr-3"></i>Báº£ng thÃ´ng bÃ¡o</h6>
+			</div>
+		</div>
+    <!----------------------------------- card-body-table ---------------------------->
+   		<div class="card-body">
+			<table class="table table-hover table-bordered"  id="table-notification">
+				<thead>
+				<tr>
+					<th>ID</th>
+					<th>Title</th>
+					<th>Date</th>
+					
+					<th>NgÆ°á»�i táº¡o</th>
+					<th>Cáº­p nháº­t </th>
+					<th> XÃ³a</th>
+				</tr>
+				</thead>
+			</table>
+			<!------------------------------- button open modal form  ---------------------------->
+			<a th:href="@{/ui/notification/form}"><button type="button" class="btn btn-primary" data-toggle="modal" id="show-form"
+					onclick="document.querySelector('.modal-title').innerHTML ='Cáº­p nháº­p thÃ´ng bÃ¡o' "
+					data-target="#form-building">
+			<i class="icon-btn fa fa-plus"></i> ThÃªm thÃ´ng bÃ¡o
+			</button> </a>
+		</div>
+    </div> 
+    <script th:src="@{/assets/js/thong-bao/thongbao.js}" type="text/javascript"></script>
+  </div>
+</div>

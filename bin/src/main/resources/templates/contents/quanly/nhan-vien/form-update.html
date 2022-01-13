@@ -1,0 +1,173 @@
+<div lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	data-layout-decorate="~{/layout-admin}">
+	<!-------------------------------------------------------------------------------------------->
+
+	<div layout:fragment="content">
+		<!------------------------------------------ Header -------------------------->
+		<div class="row">
+			<a class="title"> Cập nhật nhân viên </a>
+			<div th:replace="components/header"></div>
+		</div>
+		<!-- ----------------------------------- Form  ThÃƒÂ´ng tin chÃ¡Â»Â§ cÃ„Æ’n hÃ¡Â»â„¢ ----------------------------- -->
+		<div class="row">
+			<div class="card col-sm-8">
+				<!-- --------------------------------- card title form ---------------------->
+				<div class="card-header" style="border-radius: 6px">
+					<div class="card-titles">
+						<h6 style="color: white">
+							<i class="fas fa-address-card mr-3"></i> Thông tin nhân viên
+						</h6>
+					</div>
+				</div>
+				<!-- ---------------------------------- card body form -------------------------->
+				<div class="card-body" style="padding: 30px 0;">
+
+					<form>
+						<!--  
+						<input type="text" id="id" th:value="${id}" hidden="true">
+						-->
+
+						<div class="row">
+							<!------------------------- HÃ¡Â»ï¿½ TÃƒÂªn ------------------------------->
+							<div class="input-container col-sm-4" style="padding: 0;">
+								<input type="text" required="required" name="fullname"
+									id="fullname" style="width: 100%" /> <label for="fullname">Họ
+									tên</label>
+							</div>
+
+							<!------------------------ NgÃƒÂ y Sinh ------------------------------>
+							<div class="input-container col-sm-4" style="padding: 0;">
+								<input type="date" required="required" name="birthday"
+									id="birthday" style="width: 100%"> <label
+									for="birthday">Ngày sinh</label>
+							</div>
+
+							<!----------------------------- CMND ------------------------------>
+							<div class="input-container col-sm-3" style="padding: 0;">
+								<input type="text" required name="identityCard"
+									id="identityCard" style="width: 100%"> <label
+									for="identityCard">CMND</label>
+							</div>
+
+						</div>
+						<!-------------------------------- div End row ----------------------->
+						<div class="row">
+							<!------------------------- gioi tinh ---------------------------->
+							<div class="col-sm-4"
+								style="padding: 0 0 0 15px; margin: 0 15px 0 0;">
+								<div class="custom-control custom-radio custom-control-inline">
+									<input type="radio" id="male" name="gender" value="male"
+										class="custom-control-input"> <label
+										class="custom-control-label" for="male">Nam</label>
+								</div>
+								<div class="custom-control custom-radio custom-control-inline">
+									<input type="radio" id="female" name="gender" value="female"
+										class="custom-control-input"> <label
+										class="custom-control-label" for="female">Nữ</label>
+								</div>
+							</div>
+
+							<!----------------------------- Dia chi  ---------------------------->
+							<div class="input-container col-sm-4" style="padding: 0;">
+								<input type="text" required="required" name="address"
+									id="address" style="width: 100%" /> <label for="address">Địa
+									chỉ</label>
+							</div>
+
+							<!------------------------------ Ã„ï¿½iÃ¡Â»â€¡n ThoÃ¡ÂºÂ¡i ------------------------>
+							<div class="input-container col-sm-3" style="padding: 0;">
+								<input type="text" required="required" name="phone" id="phone"
+									style="width: 100%" /> <label for="phone">Số điện
+									thoại</label>
+							</div>
+
+						</div>
+
+						<!------------------------------------ End row ------------------------>
+						<div class="row">
+							<!----------------------------------- Username ----------------------->
+							<div class="input-container col-sm-4" style="padding: 0;">
+								<input type="text" required name="username" id="username"
+									style="width: 100%;" /> <label for="username">Tên đăng
+									nhập</label>
+							</div>
+							<!----------------------------------- Password ----------------------->
+							<div class="input-container col-sm-4" style="padding: 0;">
+								<input type="password" required name="password" id="password"
+									style="width: 100%;" /> <label for="password">Mật khẩu</label>
+							</div>
+							<!----------------------------------- Roles ----------------------->
+							<div class="col-sm-3">
+								<div class="form-check form-check-inline">
+									<input class="form-check-input" type="checkbox"
+										id="role-admin" value="admin"> <label
+										class="form-check-label" for="role-admin">Admin</label>
+								</div>
+								<div class="form-check form-check-inline">
+									<input class="form-check-input" type="checkbox"
+										id="role-moderator" value="mod"> <label
+										class="form-check-label" for="role-moderator">Quản Lý</label>
+								</div>								
+								<div class="form-check form-check-inline">
+									<input class="form-check-input" type="checkbox"
+										id="role-user" value="user"> <label
+										class="form-check-label" for="role-user">Nhân viên</label>
+								</div>							
+							</div>
+
+						</div>
+						<div class="row">
+							
+							
+							<!----------------------------------- Email ----------------------->
+							<div class="input-container col-sm-6" style="padding: 0;">
+								<input type="email" required name="email" id="email"
+									style="width: 100%;" /> <label for="email">Email</label>
+							</div>
+							
+						</div>
+						<div style="float: right;" >
+							<a th:href="@{/ui/employee}">
+								<button type="button" class="btn btn-secondary"
+									data-toggle="modal" data-target="#modal-vehicel">
+									<i class="fas fa-sign-out-alt"></i> Thoát
+								</button>
+							</a>
+
+							<button type="button" class="btn btn-success" id="save">
+								<i class="fas fa-save mr-2"></i> Lưu lại
+							</button>
+
+						</div>
+					</form>
+				</div>
+
+			</div>
+			<!------------------------------------- card image ----------------------------------->
+			<div class="card col-sm-3"
+				style="width: 200px; margin-left: 30px; padding: 0;">
+				<!------------------------------------ hÃƒÂ¬nh Ã¡ÂºÂ£nh  ---------------------------------->
+				<div class="card-img" style="border-radius: 50%">
+					<a> <img id="imgs" style=""
+						th:src="@{/assets/photo/someone.png}">
+					</a>
+				</div>
+				<form id="file-upload-form">
+					<button type="submit" id="upload-now" hidden="true">Start
+						Upload</button>
+					<input type="file" hidden="true" name="file" id="file"
+						onchange="readURL(this);" accept="image/*">
+				</form>
+				<!------------------------------------------------>
+				<div class="card-title-name">
+					<h5 id="name-formImg">Trần Quốc Vương</h5>
+					<i id="email-formImg">vuogn@cuteo.com</i>
+				</div>
+				<div class="card-body-information"></div>
+			</div>
+		</div>
+
+	</div>
+</div>
+<!-------------------------------------------------- End Div content ------------------------------------------------->

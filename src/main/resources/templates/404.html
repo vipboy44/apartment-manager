@@ -1,0 +1,41 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/assets/quanly/vendor/css/error.css}" type="text/css">
+    <link rel="stylesheet"
+          th:href="@{https://fonts.googleapis.com/css?family=Encode+Sans+Semi+Condensed:100,200,300,400}">
+    <meta charset="UTF-8">
+    <title>404</title>
+</head>
+<body>
+<h1>404 </h1>
+<h2>Liên kết không hợp lệ hoặc bị hỏng, thử lại!</h2>
+<div class="gears">
+    <div class="gear one">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <div class="gear two">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <div class="gear three">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+</div>
+<!--===============================================================================================-->
+<script th:src="@{/assets/quanly/vendor/js/core/jquery-3.5.1.min.js}"></script>
+<script>
+    $(function () {
+        setTimeout(function () {
+            $('body').removeClass('loading');
+        }, 1000);
+    });
+
+</script>
+</body>
+</html>

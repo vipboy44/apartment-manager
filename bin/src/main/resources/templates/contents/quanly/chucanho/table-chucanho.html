@@ -1,0 +1,151 @@
+
+<div lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"     data-layout-decorate="~{/layout-admin}">
+
+<div layout:fragment="content">
+    <!--------------------------------------------- Header-------------------------------->
+    <div class="row">
+        <a class="title"> Quản lý chủ căn hộ </a>
+        <div th:replace="components/header"></div>
+    </div>
+    <!---------------------------------------- Table Chu can ho  -------------------------->
+    <div class="card">
+        <!------------------------------------ card title table -------------------------->
+        <div class="card-header" style="border-radius: 6px;">
+            <div class="card-titles">
+                <h6 style="color: white"><i class="fas fa-address-card mr-3 "></i> Danh sách chủ căn hộ </h6>
+            </div>
+        </div>
+        <!------------------------------------- card-body-table --------------------------->
+        <div class="card-body">
+
+            <table class="table  table-condensed table-responsive-xl table-striped" id="table-chucanho">
+                <thead>
+                <tr>
+                    <th>Họ tên</th>
+                    <th>Giới tính</th>
+                    <th>Quê quán</th>
+                    <th>Điện thoại</th>
+                    <th>Email</th>
+                    <th>Danh sách căn hộ</th>
+                    <th>Cập nhật</th>
+                    <th>Xóa</th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+            <!--------------------------------- Insert  -------------------------->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#form-resident">
+                <i class="fas fa-user-plus mr-1"></i> Thêm chủ căn hộ
+            </button>
+
+        </div>
+    </div>
+    <!--------------------------------------------- Form insert ---------------------------------->
+    <div class="modal fade" id="form-resident" tabindex="-1"
+         role="dialog" aria-labelledby="form-resident" aria-hidden="true">
+        <div class=" modal-lg modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <!------------------------------------- Header-modal ----------------------------------->
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-address-card mr-3"></i>
+                        Thêm chủ căn hộ </h5>
+                    <i class="material-icons " data-dismiss="modal">close</i>
+                </div>
+                <!--------------------------------------- body-modal ------------------------------------->
+                <div class="modal-body">
+
+                    <form>
+                        <div class="row">
+                            <!------------------------- Há»� TÃªn ------------------------------->
+                            <div class="input-container col-md-4" style="padding: 0;">
+                                <input type="text" required="required" name="fullname" id="fullname"
+                                       style="width: 100%"/> <label for="fullname">Họ
+                                tên</label>
+                            </div>
+                            <!------------------------ NgÃ y Sinh ------------------------------>
+                            <div class="input-container col-md-4" style="padding: 0;">
+                                <input type="date" required="required" id="birthday"
+                                       style="width: 100%"> <label
+                                    for="birthday">Ngày sinh</label>
+                            </div>
+
+                            <div style="padding: 0; margin: 20px 0 0 55px">
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="male" name="gender" value="male"
+                                           class="custom-control-input"> <label
+                                        class="custom-control-label" for="male">Nam</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="female" name="gender" value="female"
+                                           class="custom-control-input"> <label
+                                        class="custom-control-label" for="female">Nữ</label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-------------------------------- div End row ----------------------->
+                        <div class="row">
+                            <!----------------------------- QuÃª QuÃ¡n  ---------------------------->
+                            <div class="input-container col-md-4" style="padding: 0;">
+                                <input type="text" required="required" id="homeTown"
+                                       style="width: 100%"/> <label for="homeTown">Quê
+                                quán</label>
+                            </div>
+                            <!----------------------------- CMND ------------------------------>
+                            <div class="input-container col-sm-4"
+                                 style="padding: 0;">
+                                <input type="text" required name="identityCard"
+                                       id="identityCard" style="width: 100%"> <label
+                                    for="identityCard">CMND</label>
+                            </div>
+                            <!------------------------------ Ä�iá»‡n Thoáº¡i ------------------------>
+                            <div class="input-container col-sm-3" style="padding: 0;">
+                                <input type="text" required="required" name="phone" id="phone"
+                                       style="width: 100%"/> <label for="phone">Số điện
+                                thoại</label>
+                            </div>
+
+                        </div>
+
+                        <!------------------------------------ End row ------------------------>
+                        <div class="row">
+                            <!--------------------------------- Nghá»� Nghiá»‡p ----------------->
+                            <div class="input-container col-sm-4" style="padding: 0;">
+                                <input type="text" required="required" name="job" id="job"
+                                       style="width: 100%"/> <label for="job">Nghề nghiệp</label>
+                            </div>
+                            <!----------------------------------- Email ----------------------->
+                            <div class="input-container col-sm-4" style="padding: 0;">
+                                <input type="email" required="required" name="email" id="email"
+                                       style="width: 100%;"/> <label for="email">Email</label>
+                            </div>
+                            <!------------------------------ Can ho so huu------------------------>
+                            <div class="input-container col-sm-3" style="padding: 0;">
+                                <input type="text" required name="id_canho" id="id_apartment"
+                                       style="width: 100%"/> <label for="phone">Căn hộ</label>
+                            </div>
+
+                        </div>
+
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="save">
+                        <i class="fas fa-save mr-2"></i> Lưu Lại
+                    </button>
+                    <button type="button" class="btn btn-danger" id="clean-form">
+                        <i class=" icon-btn fas fa-sync-alt mr-2"></i>Làm Mới
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script th:src="@{/assets/js/own-apartment/table-chucanho.js}" type="text/javascript"></script>
+</div>
+<!------------------------------------------------ End Div Content --------------------------------------------------->
+</div>

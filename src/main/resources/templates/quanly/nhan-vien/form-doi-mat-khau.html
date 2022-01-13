@@ -1,0 +1,65 @@
+<div xmlns:th="https://www.thymeleaf.org">
+    <div>
+        <div class="col-md-12">
+            <div aria-hidden="true" class="modal fade" id="form-change-password" role="dialog"
+                 tabindex="-1">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header no-bd">
+                            <h5 class="modal-title" id="form-label" style="color: black;">
+                                <i class="icon-key mr-2"></i>
+                                Đổi mật khẩu
+                            </h5>
+                            <button aria-label="Close" class="close" data-dismiss="modal"
+                                    type="button">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <input class="form-control" id="idnv" hidden="true"  type="text">
+                                        <div class="form-group form-group-default">                                         
+                                            <label>Mật khẩu cũ </label>
+                                            <input class="form-control" id="Password" placeholder="nhập mật khẩu cũ" type="password">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group form-group-default">
+                                            <label>Mật khẩu mới</label>
+                                            <input class="form-control" id="newPassword" placeholder="nhập mật khẩu mới " type="password">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group form-group-default">
+                                            <label>Xác nhận mật khẩu</label>
+                                            <input class="form-control" id="confirmPassword" placeholder="xác nhận mật khẩu mới " type="password">
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="checkbox" class="ml-2" onclick="TogglePassword()"> Hiển thị mật khẩu
+                                <a class="float-right" th:href="@{/api/account/page-forgot-password}">Quên mật khẩu?</a>
+                            </form>
+                        </div>
+                        <div class="modal-footer no-bd">
+                            <button class="btn btn-success btn-sm" id="changepassword" type="button">
+                                <i class="fas fa-save"></i>
+                                Lưu lại
+                            </button>
+                            <button class="btn btn-danger btn-sm" id="clean-form-change-password" type="button">
+                                <i class="fas fa-sync-alt"></i>
+                                Làm mới
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script th:src="@{/assets/quanly/js/nhan-vien/doi-mat-khau.js}"></script>
+    </div>
+</div>

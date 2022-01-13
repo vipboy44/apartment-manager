@@ -1,0 +1,64 @@
+<div xmlns:th="https://www.thymeleaf.org">
+    <div>
+        <div class="col-md-12">
+            <div aria-hidden="true" class="modal fade" id="form-send-email" role="dialog" tabindex="-1">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header no-bd">
+                            <h5 class="modal-title" id="form-label" style="color: black;">
+                                <i class="fas fa-envelope mr-2 "></i>
+                                Gửi E-mail
+                            </h5>
+                            <button aria-label="Close" class="close" data-dismiss="modal"
+                                    type="button">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <form  id="send-email">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group form-group-default">
+                                            <label >Gửi đến</label>
+                                            <input class="form-control" id="to" name="to" placeholder="Địa chỉ email người nhận" type="email">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group form-group-default">
+                                            <label>Tiêu đề</label>
+                                            <input class="form-control"  name="subject" id="subject" placeholder="Tiêu đề" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group form-group-default">
+                                            <label>Nội dung</label>
+                                            <textarea  id="body" name="body" rows="5" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group form-group-default">
+                                            <label >Đính kèm file </label>
+                                            <input  class="form-control" name="file" multiple  id="file-mail" type="file">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer no-bd">
+                                    <button class="btn btn-success btn-sm"  type="submit">
+                                        <i class="fas fa-paper-plane"></i>
+                                        Gửi ngay
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script th:src="@{/assets/quanly/js/gui-email/email.js}"></script>
+    </div>
+</div>

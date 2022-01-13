@@ -1,0 +1,220 @@
+<div data-layout-decorate="~{layout-admin}" layout:fragment="content"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="main-panel">
+        <div class="content">
+            <div class="page-inner">
+                <div class="page-header">
+                    <h4 class="page-title">Quản lý chủ căn hộ</h4>
+                    <ul class="breadcrumbs">
+                        <li class="nav-home">
+                            <a th:href="@{/quan-ly}">
+                                <i class="flaticon-home"></i>
+                            </a>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a >Căn hộ</a>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a>Danh sách chủ căn hộ</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="d-flex flex-wrap align-items-center">
+                                    <h4 class="card-title mt-1 ">Danh sách chủ căn hộ</h4>
+                                    <button class="btn btn-sm btn-success btn-round ml-auto mr-2 mt-1" data-target="#form-resident" data-toggle="modal"  onclick="changetitle()">
+                                        <i class="fa fa-plus"></i>
+                                       Thêm mới
+                                    </button>
+
+                                    <a th:href="@{/api/own-apartment/export-excel}">
+                                        <button class="btn btn-sm btn-primary btn-round mt-1 ">
+                                            <i class="fas fa-download"></i>
+                                           Xuất file excel
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <!-- Modal -->
+                                <div aria-hidden="true" class="modal fade" id="form-resident" role="dialog"
+                                     tabindex="-1">
+                                    <div class="modal-dialog modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header no-bd">
+                                                <h5 class="modal-title" id="form-label">
+                                                   THÊM CHỦ CĂN HỘ
+                                                </h5>
+                                                <button aria-label="Close" class="close" data-dismiss="modal"
+                                                        type="button">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form>
+                                                    <div class="row">
+                                                        <div class="col-md-6 pl-2">
+                                                            <div class="form-group form-group-default">
+                                                                <input hidden="true" id="id" name="id" type="text"/>
+                                                                <label>Họ và tên </label>
+                                                                <input class="form-control" id="fullname" placeholder="Họ & tên" type="text">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 pl-2">
+                                                            <div class="form-group form-group-default">
+                                                                <label>Ngày sinh </label>
+                                                                <input class="form-control" id="birthday" placeholder="Ngày sinh" type="date">
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-4 pl-2">
+                                                            <div class="form-group form-group-default">
+                                                                <label class="mb-1">Giới tính </label>
+                                                                <div class="custom-control custom-radio custom-control-inline">
+                                                                    <input class="custom-control-input" id="male"
+                                                                           name="gender"
+                                                                           type="radio" value="male">
+                                                                    <label class="custom-control-label"
+                                                                           for="male">Nam</label>
+                                                                </div>
+                                                                <div class="custom-control custom-radio custom-control-inline">
+                                                                    <input class="custom-control-input" id="female"
+                                                                           name="gender"
+                                                                           type="radio"
+                                                                           value="female">
+                                                                    <label class="custom-control-label"
+                                                                           for="female">Nữ</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 pl-2">
+                                                            <div class="form-group form-group-default">
+                                                                <label>CMND</label>
+                                                                <input class="form-control" id="identityCard"
+                                                                       placeholder="Số chứng minh thư"
+                                                                       type="text">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 pl-2">
+                                                            <div class="form-group form-group-default">
+                                                                <label>Điện thoại</label>
+                                                                <input class="form-control" id="phone"
+                                                                       placeholder="Số điện thoại"
+                                                                       type="text">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-4 pl-2">
+                                                            <div class="form-group form-group-default">
+                                                                <label>Nghề nghiệpp</label>
+                                                                <input class="form-control" id="job"
+                                                                       placeholder="Nghề nghiệp"
+                                                                       type="text">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-8 pl-2">
+                                                            <div class="form-group form-group-default">
+                                                                <label>Quê quán</label>
+                                                                <input class="form-control" id="homeTown"
+                                                                       placeholder="Quê quán"
+                                                                       type="text">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-8 pl-2">
+                                                            <div class="form-group form-group-default">
+                                                                <label>E-mail</label>
+                                                                <input class="form-control" id="email"
+                                                                       placeholder="Địa chỉ email"
+                                                                       type="text">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 pl-2">
+                                                            <div class="form-group form-group-default">
+                                                                <label>Căn hộ</label>
+                                                                <input class="form-control" id="id_apartment"
+                                                                       placeholder="Id căn hộ"
+                                                                       type="text">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer no-bd">
+                                                <button class="btn btn-success btn-sm" id="save" type="button">
+                                                    <i class="fas fa-save"></i>
+                                                   Lưu lại
+                                                </button>
+                                                <button class="btn btn-danger btn-sm" id="clean-form" type="button">
+                                                    <i class="fas fa-sync-alt"></i>
+                                                   Làm mới
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="table-responsive">
+                                    <table class="display table table-striped table-hover" id="table-chucanho">
+                                        <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Họ tên</th>
+                                            <th>Giới tính</th>
+                                            <th>Quê quán</th>
+                                            <th>Điện thoại</th>
+                                            <th>Email</th>
+                                            <th>Danh sách căn hộ</th>
+                                            <th style="width: 10%">Cập nhật </th>
+                                            <th style="width: 10%">Xóa</th>
+                                        </tr>
+                                        </thead>
+                                        <tfoot>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Họ tên</th>
+                                            <th>Giới tính</th>
+                                            <th>Quê quán</th>
+                                            <th>Điện thoại</th>
+                                            <th>Email</th>
+                                            <th>Danh sách căn hộ</th>
+                                            <th style="width: 10%">Cập nhật </th>
+                                            <th style="width: 10%">Xóa</th>
+                                        </tr>
+                                        </tfoot>
+                                        <tbody>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <footer class="footer">
+            <div class="container-fluid">
+                <div class="pull-left"></div>
+                <div class="copyright ml-auto">
+                    Version 1.0
+                </div>
+            </div>
+        </footer>
+
+        <script th:src="@{/assets/quanly/js/chu-ho/chu-ho.js}"></script>
+    </div>
+</div>
